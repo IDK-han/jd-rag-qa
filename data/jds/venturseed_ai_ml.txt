@@ -1,0 +1,15 @@
+Role: AI/ML Engineer Intern – Advanced Track (Summer/Fall 2026)
+Company: Venturseed
+Location: Remote Everywhere
+
+Responsibilities:
+1. Build and improve Agent / RAG / evaluation features for AI products.
+2. Prototype retrieval pipelines, prompt workflows, and measurable evals.
+3. Ship runnable demos and document design decisions.
+4. Collaborate asynchronously with a remote team.
+
+Requirements:
+1. Strong Python skills; experience with ML or LLM apps preferred.
+2. Ability to show a working AI/RAG project (GitHub preferred).
+3. Comfortable with product-oriented engineering, not only research papers.
+4. Available for Summer/Fall 2026 internship track.
