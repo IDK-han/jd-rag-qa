@@ -1,0 +1,170 @@
+{
+  "n_queries": 8,
+  "hit@1": 0.875,
+  "hit@3": 1.0,
+  "mrr": 0.9167,
+  "details": [
+    {
+      "question": "云体实习生需要什么技能？",
+      "expected_sources": [
+        "yunti_ai_agent.txt"
+      ],
+      "ranked_sources": [
+        "meiyinte_ai_app.txt",
+        "zhipu_ai_data.txt",
+        "yunti_ai_agent.txt",
+        "tuoduan_data_analyst.txt",
+        "venturseed_ai_ml.txt"
+      ],
+      "top_scores": [
+        0.6656,
+        0.6575,
+        0.5826
+      ],
+      "hit@1": 0.0,
+      "hit@3": 1.0,
+      "mrr": 0.3333
+    },
+    {
+      "question": "苏州云体科技的 AI Agent 实习用什么框架？",
+      "expected_sources": [
+        "yunti_ai_agent.txt"
+      ],
+      "ranked_sources": [
+        "yunti_ai_agent.txt",
+        "venturseed_ai_ml.txt",
+        "meiyinte_ai_app.txt",
+        "zhipu_ai_data.txt"
+      ],
+      "top_scores": [
+        0.7921,
+        0.7067,
+        0.7034
+      ],
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "mrr": 1.0
+    },
+    {
+      "question": "美因特 AI 应用开发实习做什么？",
+      "expected_sources": [
+        "meiyinte_ai_app.txt"
+      ],
+      "ranked_sources": [
+        "meiyinte_ai_app.txt",
+        "yunti_ai_agent.txt",
+        "zhipu_ai_data.txt",
+        "venturseed_ai_ml.txt"
+      ],
+      "top_scores": [
+        0.7385,
+        0.7125,
+        0.7089
+      ],
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "mrr": 1.0
+    },
+    {
+      "question": "拓端数据分析师需要会 SQL 和 Python 吗？",
+      "expected_sources": [
+        "tuoduan_data_analyst.txt"
+      ],
+      "ranked_sources": [
+        "tuoduan_data_analyst.txt",
+        "yunti_ai_agent.txt",
+        "meiyinte_ai_app.txt",
+        "zhipu_ai_data.txt",
+        "venturseed_ai_ml.txt"
+      ],
+      "top_scores": [
+        0.7432,
+        0.4148,
+        0.4049
+      ],
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "mrr": 1.0
+    },
+    {
+      "question": "智谱华章 AI 数据实习生每周要投入多少时间？",
+      "expected_sources": [
+        "zhipu_ai_data.txt"
+      ],
+      "ranked_sources": [
+        "zhipu_ai_data.txt",
+        "meiyinte_ai_app.txt",
+        "tuoduan_data_analyst.txt",
+        "yunti_ai_agent.txt"
+      ],
+      "top_scores": [
+        0.8704,
+        0.7932,
+        0.5826
+      ],
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "mrr": 1.0
+    },
+    {
+      "question": "Venturseed AI/ML intern requirements for RAG",
+      "expected_sources": [
+        "venturseed_ai_ml.txt"
+      ],
+      "ranked_sources": [
+        "venturseed_ai_ml.txt",
+        "zhipu_ai_data.txt",
+        "meiyinte_ai_app.txt",
+        "yunti_ai_agent.txt"
+      ],
+      "top_scores": [
+        0.616,
+        0.5673,
+        0.5332
+      ],
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "mrr": 1.0
+    },
+    {
+      "question": "哪些岗位涉及 MCP 或多 Agent 后端开发？",
+      "expected_sources": [
+        "meiyinte_ai_app.txt"
+      ],
+      "ranked_sources": [
+        "meiyinte_ai_app.txt",
+        "venturseed_ai_ml.txt",
+        "yunti_ai_agent.txt",
+        "zhipu_ai_data.txt"
+      ],
+      "top_scores": [
+        0.7019,
+        0.5083,
+        0.4761
+      ],
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "mrr": 1.0
+    },
+    {
+      "question": "有哪些做数据标注和质检的远程实习？",
+      "expected_sources": [
+        "zhipu_ai_data.txt"
+      ],
+      "ranked_sources": [
+        "zhipu_ai_data.txt",
+        "tuoduan_data_analyst.txt",
+        "meiyinte_ai_app.txt",
+        "venturseed_ai_ml.txt"
+      ],
+      "top_scores": [
+        0.7351,
+        0.6798,
+        0.6029
+      ],
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "mrr": 1.0
+    }
+  ]
+}

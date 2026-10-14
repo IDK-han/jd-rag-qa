@@ -1,0 +1,50 @@
+[
+  {
+    "question": "云体实习生需要什么技能？",
+    "expected_sources": [
+      "yunti_ai_agent.txt"
+    ]
+  },
+  {
+    "question": "苏州云体科技的 AI Agent 实习用什么框架？",
+    "expected_sources": [
+      "yunti_ai_agent.txt"
+    ]
+  },
+  {
+    "question": "美因特 AI 应用开发实习做什么？",
+    "expected_sources": [
+      "meiyinte_ai_app.txt"
+    ]
+  },
+  {
+    "question": "拓端数据分析师需要会 SQL 和 Python 吗？",
+    "expected_sources": [
+      "tuoduan_data_analyst.txt"
+    ]
+  },
+  {
+    "question": "智谱华章 AI 数据实习生每周要投入多少时间？",
+    "expected_sources": [
+      "zhipu_ai_data.txt"
+    ]
+  },
+  {
+    "question": "Venturseed AI/ML intern requirements for RAG",
+    "expected_sources": [
+      "venturseed_ai_ml.txt"
+    ]
+  },
+  {
+    "question": "哪些岗位涉及 MCP 或多 Agent 后端开发？",
+    "expected_sources": [
+      "meiyinte_ai_app.txt"
+    ]
+  },
+  {
+    "question": "有哪些做数据标注和质检的远程实习？",
+    "expected_sources": [
+      "zhipu_ai_data.txt"
+    ]
+  }
+]

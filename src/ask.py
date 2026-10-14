@@ -1,57 +1,52 @@
-"""对 JD 知识库提问：先检索相关段落，再拼成可给大模型用的上下文。"""
+"""对 JD 知识库提问：检索相关段落；若配置了 API Key 则调用大模型生成回答。"""
 from __future__ import annotations
 
 import argparse
-import json
+import sys
 from pathlib import Path
 
-import faiss
-import numpy as np
-from sentence_transformers import SentenceTransformer
+# Allow `python src/ask.py` without installing as package
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-ROOT = Path(__file__).resolve().parents[1]
-INDEX = ROOT / "data" / "index.faiss"
-META = ROOT / "data" / "meta.json"
-MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-
-
-def retrieve(question: str, top_k: int = 4) -> list[dict]:
-    rows = json.loads(META.read_text(encoding="utf-8"))
-    index = faiss.read_index(str(INDEX))
-    model = SentenceTransformer(MODEL_NAME)
-    q = model.encode([question], normalize_embeddings=True)
-    q = np.asarray(q, dtype="float32")
-    scores, idxs = index.search(q, top_k)
-    hits = []
-    for score, i in zip(scores[0], idxs[0]):
-        if int(i) < 0:
-            continue
-        row = rows[int(i)]
-        hits.append({**row, "score": float(score)})
-    return hits
+from retrieve import build_prompt, call_llm, ensure_index, retrieve
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="JD RAG 问答")
     parser.add_argument("question", help="你的问题，例如：云体实习要什么技能？")
     parser.add_argument("--top-k", type=int, default=4)
+    parser.add_argument(
+        "--no-llm",
+        action="store_true",
+        help="只检索并打印 Prompt，不调用大模型",
+    )
     args = parser.parse_args()
 
-    if not INDEX.exists() or not META.exists():
-        raise SystemExit("Missing index. Run: python src/chunk.py && python src/build_index.py")
-
+    ensure_index()
     hits = retrieve(args.question, top_k=args.top_k)
     print("=== 检索结果 ===")
     for h in hits:
-        print(f"[{h['score']:.3f}] {h['source']} :: {h['text'][:120].replace(chr(10), ' ')}...")
-    context = "\n\n".join(f"来源:{h['source']}\n{h['text']}" for h in hits)
-    print("\n=== 可粘贴给大模型的上下文 ===\n")
-    print(context)
-    print("\n=== 提示词示例 ===\n")
-    print(
-        "你是求职助手。只根据下列 JD 片段回答，不知道就说不知道。\n\n"
-        f"问题：{args.question}\n\n材料：\n{context}"
-    )
+        preview = h["text"][:120].replace("\n", " ")
+        print(f"[{h['score']:.3f}] {h['source']} :: {preview}...")
+
+    prompt = build_prompt(args.question, hits)
+
+    if args.no_llm:
+        print("\n=== 可粘贴给大模型的上下文 / 提示词 ===\n")
+        print(prompt)
+        return
+
+    answer = call_llm(prompt)
+    if answer is None:
+        print("\n=== 可粘贴给大模型的上下文 / 提示词 ===\n")
+        print(prompt)
+        print(
+            "\n提示: 设置 DEEPSEEK_API_KEY 或 OPENAI_API_KEY 后可自动生成回答"
+            "（也可加 --no-llm 只看检索）。"
+        )
+    else:
+        print("\n=== 大模型回答 ===\n")
+        print(answer)
 
 
 if __name__ == "__main__":

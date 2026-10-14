@@ -4,4 +4,7 @@ __pycache__/
 data/index.faiss
 data/meta.json
 data/chunks.jsonl
+.env
 .DS_Store
+*.egg-info/
+.gradio/
