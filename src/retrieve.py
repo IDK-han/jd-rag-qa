@@ -79,10 +79,28 @@ def build_prompt(question: str, hits: list[dict[str, Any]]) -> str:
     )
 
 
+def _load_dotenv() -> None:
+    """Load KEY=VALUE from project .env into os.environ if not already set."""
+    import os
+
+    env_path = ROOT / ".env"
+    if not env_path.exists():
+        return
+    for line in env_path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, val = line.partition("=")
+        key, val = key.strip(), val.strip().strip('"').strip("'")
+        if key and key not in os.environ:
+            os.environ[key] = val
+
+
 def call_llm(prompt: str) -> str | None:
     """Call OpenAI-compatible chat API if API key is set. Returns answer or None."""
     import os
 
+    _load_dotenv()
     deepseek = os.environ.get("DEEPSEEK_API_KEY", "").strip()
     openai_key = os.environ.get("OPENAI_API_KEY", "").strip()
     if not deepseek and not openai_key:
